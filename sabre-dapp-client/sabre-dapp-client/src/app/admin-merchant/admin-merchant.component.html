@@ -1,0 +1,45 @@
+<div class="container" style="padding-top:60px;">  
+  <div class="row">  
+    <div class="col-md-6 mx-auto">  
+      <div class="card-group">  
+        <div class="card p-4">  
+          <div class="card-body">  
+              <h4 style="text-align:center;color:brown" *ngIf="merchant">Your Sabre balance is {{balance}} sab.</h4> 
+              <h4 style="text-align:center;color:brown" *ngIf="sabre">Reconcile sabre balance</h4> 
+              <table class="table table-hover table-striped table-condensed tasks-table" *ngIf="sabre">
+                <thead>
+                  <tr>
+                    <th>Sabre</th>
+                    <th>MMT</th>
+                    <th>Uber</th>
+                    <th>Marriot</th>
+                    <th>Delta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td *ngIf="sb !== -1">{{sb}}</td>
+                    <td *ngIf="sb == -1"></td>
+                    <td *ngIf="mmtb !== -1">{{mmtb}}</td>
+                    <td *ngIf="mmtb == -1"></td>
+                    <td *ngIf="uberb !== -1">{{uberb}}</td>
+                    <td *ngIf="uberb == -1"></td>
+                    <td *ngIf="mrtb !== -1">{{mrtb}}</td>
+                    <td *ngIf="mrtb == -1"></td>
+                    <td *ngIf="delb !== -1">{{delb}}</td>
+                    <td *ngIf="delb == -1"></td>
+                  </tr>
+                </tbody>
+                </table>
+          </div>
+          <div class="input-group mb-3">  
+              <!-- <button [routerLink]="['/register']" class="btn btn-primary px-4 btn-space">Home</button> -->
+              <span class="table-remove"> 
+                <button (click)="reconcileReport()" class="btn btn-danger btn-rounded pull-right btn-space">Reconcile report</button>
+              </span>
+          </div>
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</div>

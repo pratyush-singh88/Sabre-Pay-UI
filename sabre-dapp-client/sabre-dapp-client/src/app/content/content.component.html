@@ -1,0 +1,64 @@
+
+<div class="container" style="padding-top:60px;">  
+  <div class="row">  
+    <div class="col-md-6 mx-auto">  
+      <div class="card-group">  
+        <div class="card p-4">  
+          <div class="card-body">  
+            <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">   
+              <h1 style="text-align:center">Login</h1>  
+               
+              <div class="input-group mb-2">  
+                <div class="input-group-prepend">  
+                  <span class="input-group-text"><i class="icon-user"></i></span>  
+                </div>  
+                <input type="text" class="form-control sty1" placeholder="email"  formControlName="email" required>  
+              </div>
+              <div class="input-group mb-3 alert-danger" *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+                <div *ngIf="userForm.controls['email'].errors.required">
+                  email is required.
+                </div>
+              </div>  
+              <div class="input-group mb-3">  
+                <div class="input-group-prepend">  
+                  <span class="input-group-text"><i class="icon-lock"></i></span>  
+                </div>  
+                <input  type="password" class="form-control"  placeholder="password"  formControlName="password">  
+              </div>
+              <div class="input-group mb-3 alert-danger" *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)">
+                <div *ngIf="userForm.controls['password'].errors.required">
+                  password is required.
+                </div>
+              </div>
+              <!-- <div class="input-group mb-4" *ngIf="this.isButtonVisible">
+                    <form #f="ngForm">
+                      <input type="image" (click)="processImage()" src="/assets/img/cam-icon.jpg" 
+                         width="60" height="60" />
+                    </form>
+                    <button *ngIf="faceApiResponse | async" type="button">
+                    </button>
+              </div>
+              <div class="input-group mb-4">
+                <img class="facialImg" *ngIf="imageString" [src]="imageString" alt="imageString" height="200" width="200" />  
+              </div> -->
+              <div>  
+                  <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">  
+                    {{errors}} {{errorMessage}}  
+                  </p>  
+                </div>  
+              <div class="row">  
+                <div class="col-6">  
+                  <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary px-4">Login</button>  
+                </div>
+                <div class="col-6">  
+                  <a [routerLink]="['/register']" class="btn btn-link">Cancel</a>
+                </div>  
+              </div>  
+            </form>
+          </div>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</div>
+     

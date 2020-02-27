@@ -1,0 +1,61 @@
+<!-- <div *ngIf="balanceDisplay">
+    <h4> Last 25 transactions of Sabre consortia </h4>
+    <pre>{{transaction | json}} </pre>
+</div> -->
+
+
+<div class="card">
+  <p class="text-center font-weight-bold text-uppercase">Transaction report</p>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <!-- <th class="text-center">Index</th>
+            <th class="text-center">Hash</th>
+            <th class="text-center">Block Hash</th> -->
+            <th class="text-center">Block Number</th> 
+            <th class="text-center">Timestamp</th>
+            <!-- <th class="text-center">Private</th> -->
+            <th class="text-center">From</th>
+            <th class="text-center">To</th>
+            <!-- <th class="text-center">Events Signature</th>
+            <th class="text-center">Events From</th>
+            <th class="text-center">Events To</th> -->
+            <th class="text-center">Value</th>
+            <th class="text-center">Status</th>
+            <!-- <th class="text-center">ERC20</th> -->
+          </tr>
+        </thead>
+        <tbody>   
+          <tr *ngFor="let tran of transaction; let i = index">  
+            <!-- <td class="pt-3-half" contenteditable="false">{{ tran.index}}</td>
+            <td class="pt-3-half" contenteditable="false">{{ tran.hash}}</td>
+            <td class="pt-3-half" contenteditable="false">{{ tran.blockHash}}</td> -->
+            <td class="pt-3-half" contenteditable="false">{{ tran.blockNumber}}</td>
+            <td class="pt-3-half" contenteditable="false">{{ tran.timestamp}}</td>
+            <!-- <td class="pt-3-half" contenteditable="false">{{ tran.private}}</td> -->
+            <!--<td class="pt-3-half" contenteditable="false">{{ tran.from}}</td>
+            <td class="pt-3-half" contenteditable="false">{{ tran.to}}</td>-->
+			<td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].from}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].to}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td>
+            <!-- <td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].eventSignature}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].from}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].to}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td> -->
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events != null">{{ tran.events[0].value}}</td>
+            <td class="pt-3-half" contenteditable="false" *ngIf="tran.events == null"></td>
+            <td class="pt-3-half" contenteditable="false">{{ tran.status}}</td>
+            <!-- <td class="pt-3-half" contenteditable="false">{{ tran.isERC20}}</td>   -->
+          </tr>
+        </tbody>  
+      </table>
+    </div>
+  </div>
+</div>

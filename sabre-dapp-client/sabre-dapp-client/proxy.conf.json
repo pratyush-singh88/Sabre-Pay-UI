@@ -1,0 +1,7 @@
+{
+  "/api/v1/consortia/k0z7nyu64x/environments/k0xpgllhtz/nodes/k0vpc8ky3u/eth/accounts": {
+    "target": "https://console-ko.kaleido.io",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

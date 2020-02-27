@@ -1,0 +1,73 @@
+<div class="container" style="padding-top:40px;">  
+  <div class="row">  
+    <div class="col-md-6 mx-auto">  
+      <div class="card mx-4">  
+        <div class="card-body p-4">  
+          <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">  
+            <h1 style="text-align:center">Register</h1>  
+            <div>
+              <!-- <ng-progress></ng-progress>   -->
+              <ng-progress [minimum]="0.15" [maximum]="1"
+                  [speed]="'200'" [showSpinner]="'false'" [direction]="'leftToRightIncreased'"
+                  [color]="'green'" [trickleSpeed]="250" [thick]="true" [ease]="'linear'"
+               ></ng-progress>
+              <p style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">  
+                {{errors}}  
+              </p>  
+            </div>
+            <div class="input-group mb-3">  
+              <input type="text" class="form-control" placeholder="email"  formControlName="email" required>  
+            </div>
+            <div class="input-group mb-3 alert-danger" *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+              <div *ngIf="userForm.controls['email'].errors.required">
+                email is required.
+              </div>
+            </div> 
+            <div class="input-group mb-3">  
+              <input type="password" class="form-control" placeholder="password"  formControlName="password" required>  
+            </div>
+            <div class="input-group mb-3 alert-danger" *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)">
+              <div *ngIf="userForm.controls['password'].errors.required">
+                password is required.
+              </div>
+            </div>  
+            <!-- <div class="input-group mb-3">  
+              <select ng-model="user.role" class="form-control" formControlName="userRole">
+                <option [ngValue]="null">Choose your role</option>
+                <option value="Admin">Admin</option>
+                <option value="Company">Company</option>
+                <option value="Individual">Individual</option>
+              </select>
+            </div>
+            <div class="input-group mb-3 alert-danger" *ngIf="userForm.controls['userRole'].invalid && (userForm.controls['userRole'].dirty || userForm.controls['userRole'].touched)">
+              <div *ngIf="userForm.controls['userRole'].errors.required">
+                userRole is required.
+              </div>
+            </div>   -->
+            <div class="input-group mb-4" *ngIf="this.isButtonVisible">  
+                <form #f="ngForm">
+                    <input type="image" (click)="processImage()" src="/assets/img/cam-icon.jpg" 
+                       width="60" height="60" />
+                  </form>
+                  <button *ngIf="faceApiResponse | async" type="button">
+                  </button>
+            </div>
+            <div class="input-group mb-4">
+                <img class="facialImg" *ngIf="imageString" [src]="imageString" alt="imageString" 
+                  height="200" width="200" />  
+            </div>
+            <div class="row">  
+              <div class="col-6">  
+                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary px-4 btn-space">Register</button> 
+                <button type="button" (click)="reset()" class="btn btn-primary px-4">Reset</button>
+              </div>
+              <div class="col-6">  
+                <a [routerLink]="['/login']" class="btn btn-link">Sabre/Merchant</a>
+              </div> 
+            </div>  
+          </form>  
+        </div>  
+      </div>  
+    </div>  
+  </div>  
+</div>  
